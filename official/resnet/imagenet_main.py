@@ -24,8 +24,8 @@ import sys
 
 import tensorflow as tf
 
-import resnet_model
-import vgg_preprocessing
+import models.official.resnet.resnet_model as resnet_model
+import models.official.resnet.vgg_preprocessing as vgg_preprocessing
 
 parser = argparse.ArgumentParser()
 

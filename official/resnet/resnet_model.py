@@ -45,7 +45,7 @@ def batch_norm_relu(inputs, is_training, data_format):
   inputs = tf.layers.batch_normalization(
       inputs=inputs, axis=1 if data_format == 'channels_first' else 3,
       momentum=_BATCH_NORM_DECAY, epsilon=_BATCH_NORM_EPSILON, center=True,
-      scale=True, training=is_training, fused=True)
+      scale=True, training=is_training, fused=False)
   inputs = tf.nn.relu(inputs)
   return inputs
 

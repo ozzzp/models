@@ -24,7 +24,7 @@ import sys
 
 import tensorflow as tf
 
-import resnet_model
+import models.official.resnet.resnet_model as resnet_model
 
 parser = argparse.ArgumentParser()
 
@@ -161,9 +161,9 @@ def input_fn(is_training, data_dir, batch_size, num_epochs=1):
     # is a relatively small dataset, we choose to shuffle the full epoch.
     dataset = dataset.shuffle(buffer_size=_NUM_IMAGES['train'])
 
-  dataset = dataset.map(parse_record)
+  dataset = dataset.map(parse_record, num_parallel_calls=10)
   dataset = dataset.map(
-      lambda image, label: (preprocess_image(image, is_training), label))
+      lambda image, label: (preprocess_image(image, is_training), label), num_parallel_calls=10)
 
   dataset = dataset.prefetch(2 * batch_size)
 
