@@ -26,6 +26,7 @@ import tensorflow as tf
 
 import models.official.resnet.resnet_model as resnet_model
 
+
 parser = argparse.ArgumentParser()
 
 # Basic model parameters.
